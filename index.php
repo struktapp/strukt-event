@@ -15,12 +15,12 @@ Loop::add("help", function(){
 	echo "Docs\n";
 });
 
-Loop::add("hello", function($name){
+// Loop::add("hello", function($name){
 
-	echo sprintf("Hello %s", $name);
-});
+// 	echo sprintf("Hello %s", $name);
+// });
 
-// Loop::run();
+Loop::run();
 // Cmd::exec("help");
 // Cmd::exec("auth", ["pitsolu", "pazzw0rd"]);
-Cmd::exec("hello", ["Sam"]);
+// Cmd::exec("hello", ["Sam"]);

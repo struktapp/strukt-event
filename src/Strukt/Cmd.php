@@ -32,6 +32,11 @@ class Cmd{
 		static::$names[] = $name;
 	}
 
+	public static function exists($name){
+
+		return array_key_exists($name, static::$callbacks);
+	}
+
 	public static function exec(string $name, array $args = null){
 
 		$callback = static::$callbacks[$name];

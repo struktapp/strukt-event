@@ -1,6 +1,8 @@
 Strukt Event
 ===
 
+This is not an `event-loop` it has events and loops.
+
 ## Events
 
 ```php
@@ -51,10 +53,10 @@ Loop::add("help", function(){
 	echo "Docs\n";
 });
 
-Loop::add("hello", function($name){
+// Loop::add("hello", function($name){
 
-	echo sprintf("Hello %s", $name);
-});
+// 	echo sprintf("Hello %s", $name);
+// });
 
 Loop::run();
 // Cmd::exec("help");
