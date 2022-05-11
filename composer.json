@@ -1,0 +1,20 @@
+{
+    "name": "strukt/event",
+    "description": "No event loop included!",
+    "type": "package",
+    "require": {
+		"php": ">=7.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "Strukt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "samweru",
+            "email": "pitsolu@gmail.com"
+        }
+    ]
+}
