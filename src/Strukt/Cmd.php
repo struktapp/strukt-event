@@ -32,14 +32,40 @@ class Cmd{
 		static::$names[] = $name;
 	}
 
+	public static function get($name){
+
+		return static::$callbacks[$name];
+	}
+
+	public static function ls(){
+
+		return array_keys(static::$callbacks);
+	}
+
 	public static function exists($name){
 
 		return array_key_exists($name, static::$callbacks);
 	}
 
+	public static function doc($name){
+
+		$rfunc = Ref::func(static::get($name))->getRef();
+
+        $doc = $rfunc->getDocComment();
+
+        if(!empty($doc)){
+
+            $doc = str_replace(["/**","* ", "*/"], "", strval($doc));
+
+            return sprintf(" %s %s", str_pad($name, 15), trim($doc));
+        }
+
+        return sprintf(" %s", $name);
+	}
+
 	public static function exec(string $name, array $args = null){
 
-		$callback = static::$callbacks[$name];
+		$callback = static::get($name);
 
 		$event =  Event::create($callback);
 		if(!is_null($args))

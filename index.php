@@ -5,11 +5,20 @@ use Strukt\Cmd;
 
 require "bootstrap.php";
 
+/**
+* Authentication
+*
+* @param username
+* @param password
+*/
 Loop::add("auth", ["admin", "p@55w0rd"], function($username, $password){
 
 	echo sprintf("username:%s|password:%s\n", $username, $password);
 });
 
+/**
+* Help
+*/
 Loop::add("help", function(){
 
 	echo "Docs\n";
@@ -20,7 +29,7 @@ Loop::add("help", function(){
 // 	echo sprintf("Hello %s", $name);
 // });
 
-Loop::run();
+// Loop::run();
 // Cmd::exec("help");
 // Cmd::exec("auth", ["pitsolu", "pazzw0rd"]);
 // Cmd::exec("hello", ["Sam"]);
