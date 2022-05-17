@@ -17,13 +17,6 @@ class Event{
 	private $args = null;
 
 	/**
-	* Event
-	*
-	* @var Array
-	*/
-	// private $event = null;
-
-	/**
 	* Reflected Event
 	*
 	* @var Strukt\Ref
@@ -43,8 +36,6 @@ class Event{
 	* @param $event callable
 	*/
 	public function __construct(callable $event){
-
-		// $this->event = $event;
 
 		$this->ref = Ref::func($event);
 
@@ -70,7 +61,6 @@ class Event{
 	*/
 	public function apply(...$args){
 
-		// $this->args = func_get_args();
 		$this->args = $args;
 
 		return $this;
@@ -127,23 +117,16 @@ class Event{
 
 		if(is_null($this->args))
 			return $this->ref->invoke();
-			// return call_user_func($this->event);
-
-		// if(!is_null($this->ref)){
-			
-			// $isNotAssoc = is_numeric(key($this->args));
 
 		$args=null;
 		if(Contract\AbstractArr::isMap($this->args))
 			foreach($this->rParams as $rParam)
 				$args[] = $this->args[$rParam->getName()];
 
+		$this->args = array_values($this->args);
 		if(!is_null($args))
 			$this->args = $args;
 
 		return $this->ref->invoke(...$this->args);
-		// }
-
-		// return call_user_func_array($this->event, $this->args);				
 	}
 }
