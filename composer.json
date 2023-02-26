@@ -16,5 +16,6 @@
             "name": "samweru",
             "email": "pitsolu@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability":"dev"
 }
