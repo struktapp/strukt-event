@@ -11,6 +11,12 @@
             "Strukt\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-0": {
+            "Strukt\\":"src/",
+            "Fixture\\":"fixture/"
+        }
+    },
     "authors": [
         {
             "name": "samweru",

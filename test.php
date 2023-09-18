@@ -3,7 +3,7 @@
 use Strukt\Loop;
 use Strukt\Cmd;
 
-require "bootstrap.php";
+require "vendor/autoload.php";
 
 Loop::halt(function(){
 
