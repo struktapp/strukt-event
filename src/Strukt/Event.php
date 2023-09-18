@@ -9,6 +9,8 @@ namespace Strukt;
 */
 class Event{
 
+	use Helper\Arr;
+
 	/**
 	* Event arguments
 	*
@@ -119,7 +121,7 @@ class Event{
 			return $this->ref->invoke();
 
 		$args=null;
-		if(Contract\AbstractArr::isMap($this->args))
+		if($this->isMap($this->args))
 			foreach($this->rParams as $rParam)
 				$args[] = $this->args[$rParam->getName()];
 

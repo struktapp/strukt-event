@@ -1,13 +1,13 @@
 <?php
 
-namespace Strukt\Contract;
+namespace Strukt\Helper;
 
-abstract class AbstractArr{
+trait Arr{
 
 	/**
 	* Is array fully associative
 	*/
-	public static function isMap(array $arr){
+	public function isMap(array $arr){
 
 		return !empty($arr) && 
 				array_keys($arr) !== range(0, count($arr) - 1) && 
