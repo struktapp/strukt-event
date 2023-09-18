@@ -9,7 +9,8 @@
     "autoload": {
         "psr-0": {
             "Strukt\\": "src/"
-        }
+        },
+        "files":["src/helpers.php"]
     },
     "autoload-dev": {
         "psr-0": {
