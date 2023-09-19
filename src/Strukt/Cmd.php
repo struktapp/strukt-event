@@ -37,7 +37,12 @@ class Cmd{
 		return static::$callbacks[$name];
 	}
 
-	public static function ls(){
+	public static function ls(string $filter = null){
+
+		if(!is_null($filter))
+			return array_keys(array_filter(static::$callbacks, 
+											fn($k)=>preg_match(sprintf("/%s/", $filter), $k), 
+											ARRAY_FILTER_USE_KEY));
 
 		return array_keys(static::$callbacks);
 	}
