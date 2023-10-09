@@ -16,6 +16,20 @@ if(!function_exists("event")){
 	} 
 }
 
+if(!function_exists("cmd")){
+
+	function cmd(string $name, array $args = null){
+
+		if(Cmd::exists($name)){
+
+			if(!is_null($args))
+				return Cmd::exec($name, $args);
+
+			return Cmd::exec($name);
+		}
+	}
+}
+
 if(!function_exists("alias")){
 
 	function alias(string $alias = null, string $long_name = null){
