@@ -28,10 +28,12 @@ class Loop extends Cmd{
 		return static::$halted;
 	}
 
-	public static function run(){
+	public static function run(array $options = []){
+
+		if(array_key_exists("alias", $options))
+			static::$names = alias(sprintf("%s*", trim($options["alias"],"*")));
 
 		$idx = 0;
-
 	    while(static::noExit()){
 
 	    	$name = static::$names[$idx];
