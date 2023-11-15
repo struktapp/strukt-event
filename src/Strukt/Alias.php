@@ -27,8 +27,17 @@ class Alias{
 		return array_key_exists($alias, static::$aliases);
 	}
 
-	public static function ls(){
+	public static function ls(string $starts_with = null){
 
-		return array_keys(static::$aliases);
+		$names = array_keys(static::$aliases);
+		if(is_null($starts_with))
+			return $names;
+
+		$ls = [];
+		foreach($names as $name)
+			if(str_starts_with($name, $starts_with))
+				$ls[] = $name;
+
+		return $ls;
 	}
 }

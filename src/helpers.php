@@ -34,11 +34,18 @@ if(!function_exists("alias")){
 
 	function alias(string $alias = null, string $long_name = null){
 
-		if((!is_null($alias) || !empty($alias)) && is_null($long_name))
-			return Alias::get($alias);
+		if(!is_null($alias))
+			if(!str_ends_with($alias, "*")){
 
-		if(!is_null($alias) && !is_null($long_name))
-			return Alias::set($alias, $long_name);
+				if(!empty($alias) && is_null($long_name))
+					return Alias::get($alias);
+
+				if(!is_null($long_name))
+					return Alias::set($alias, $long_name);
+			}
+
+		if(!is_null($alias))
+			return Alias::ls(trim($alias,"*"));
 
 		return Alias::ls();
 	}
