@@ -50,3 +50,11 @@ if(!function_exists("alias")){
 		return Alias::ls();
 	}
 }
+
+if(!function_exists("path")){
+
+	function path(string $path){
+
+		return $path;
+	}
+}
