@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13cd54eb467067ab3859eb4a5d53cb0f",
-    "packages": [],
+    "content-hash": "674ea37e12fa7765c8c4cd0ccec8275a",
+    "packages": [
+        {
+            "name": "strukt/base",
+            "version": "v1.0.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samweru/strukt-base.git",
+                "reference": "5592ddfded8f17d5f8adc3fd19249918e9398d78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samweru/strukt-base/zipball/5592ddfded8f17d5f8adc3fd19249918e9398d78",
+                "reference": "5592ddfded8f17d5f8adc3fd19249918e9398d78",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-0": {
+                    "Strukt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moderator",
+                    "email": "pitsolu@gmail.com"
+                }
+            ],
+            "description": "Base Functionality",
+            "support": {
+                "issues": "https://github.com/samweru/strukt-base/issues",
+                "source": "https://github.com/samweru/strukt-base/tree/v1.0.0-alpha"
+            },
+            "time": "2024-01-25T01:50:53+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",

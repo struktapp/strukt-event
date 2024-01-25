@@ -3,7 +3,8 @@
     "description": "No event loop included!",
     "type": "package",
     "require": {
-		"php": "^8.1"
+		"php": "^8.1",
+        "strukt/base": "v1.0.0-alpha"
     },
     "license": "MIT",
     "autoload": {

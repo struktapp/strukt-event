@@ -4,7 +4,9 @@ use Strukt\Event;
 use Strukt\Cmd;
 use Strukt\Alias;
 
-if(!function_exists("event")){
+helper("events");
+
+if(helper_add("event")){
 
 	function event(string $name, callable $func = null){
 
@@ -16,7 +18,7 @@ if(!function_exists("event")){
 	} 
 }
 
-if(!function_exists("cmd")){
+if(helper_add("cmd")){
 
 	function cmd(string $name, array $args = null){
 
@@ -30,7 +32,7 @@ if(!function_exists("cmd")){
 	}
 }
 
-if(!function_exists("alias")){
+if(helper_add("alias")){
 
 	function alias(string $alias = null, string $long_name = null){
 
@@ -51,7 +53,7 @@ if(!function_exists("alias")){
 	}
 }
 
-if(!function_exists("path")){
+if(helper_add("path")){
 
 	function path(string $path){
 
