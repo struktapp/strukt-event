@@ -60,3 +60,11 @@ if(helper_add("path")){
 		return $path;
 	}
 }
+
+if(helper_add("ref")){
+
+	function ref(string $class){
+
+		return new Strukt\Ref($class);
+	}
+}
