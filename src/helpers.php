@@ -63,8 +63,17 @@ if(helper_add("path")){
 
 if(helper_add("ref")){
 
-	function ref(string $class){
+	function ref(mixed $class){
 
-		return new Strukt\Ref($class);
+		if(is_string($class))
+			if(class_exists($class))
+				return Strukt\Ref::create($class);
+
+		if(is_object($class))
+			if(class_exists(@array_shift(array_filter([get_class($class)], fn($name)=>$name!="Closure"))??""))
+				return Strukt\Ref::createFrom($class);
+
+		if(is_callable($class))
+			return Strukt\Ref::func($class);
 	}
 }
