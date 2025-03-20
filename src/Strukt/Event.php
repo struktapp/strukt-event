@@ -9,7 +9,7 @@ namespace Strukt;
 */
 class Event{
 
-	use Helper\Arr;
+	use Traits\Arr;
 
 	/**
 	* Event arguments
