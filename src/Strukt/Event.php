@@ -48,8 +48,10 @@ class Event{
 	* Static constructor
 	*
 	* @param $event callable
+	* 
+	* @return static
 	*/
-	public static function create(callable $event):Event{
+	public static function create(callable $event):static{
 
 		return new self($event);
 	}
@@ -59,9 +61,9 @@ class Event{
 	*
 	* @param mixed ...
 	*
-	* @return \Strukt\Event
+	* @return static
 	*/
-	public function apply(...$args):Event{
+	public function apply(...$args):static{
 
 		$this->args = $args;
 
@@ -73,9 +75,9 @@ class Event{
 	*
 	* @param array $args
 	*
-	* @return \Strukt\Event
+	* @return static
 	*/
-	public function applyArgs(array $args):Event{
+	public function applyArgs(array $args):static{
 
 		$this->args = $args;
 

@@ -66,9 +66,9 @@ class Ref{
 	* 
 	* @param object $instance
 	* 
-	* @return Ref
+	* @return static
 	*/
-	public static function createFrom(object $instance):Ref{
+	public static function createFrom(object $instance):static{
 
 		$class = new \ReflectionObject($instance);
 
@@ -82,9 +82,9 @@ class Ref{
 	/**
 	 * @param string $classname
 	 * 
-	 * @return Ref
+	 * @return static
 	 */
-	public static function create(string $classname):Ref{		
+	public static function create(string $classname):static{		
 
 		$class = new \ReflectionClass($classname);
 
@@ -223,9 +223,9 @@ class Ref{
 	* 
 	* @param mixed ...
 	* 
-	* @return Ref
+	* @return static
 	*/
-	public function make(...$args):Ref{
+	public function make(...$args):static{
 
 		$this->instance = $this->class->newInstance($args);
 
@@ -237,9 +237,9 @@ class Ref{
 	* 
 	* @param array $args
 	* 
-	* @return Ref
+	* @return static
 	*/
-	public function makeArgs(array $args):Ref{
+	public function makeArgs(array $args):static{
 
 		$this->instance = $this->class->newInstanceArgs($args);
 
@@ -249,9 +249,9 @@ class Ref{
 	/**
 	* newInstanceWithoutConstructor
 	* 
-	* @return Ref
+	* @return static
 	*/
-	public function noMake():Ref{
+	public function noMake():static{
 
 		$this->instance = $this->class->newInstanceWithoutConstructor();
 
