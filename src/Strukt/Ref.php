@@ -7,12 +7,20 @@ class Ref{
 	private $class;
 	private $instance;
 
+	/**
+	 * @param \Reflector $class
+	 */
 	public function __construct(\Reflector $class){
 
 		$this->class = $class;
 	}
 
-	public static function func($name_or_func){
+	/**
+	 * @param string|callable $name_or_func
+	 * 
+	 * @return mixed
+	 */
+	public static function func(string|callable $name_or_func):mixed{
 
 		$rFunc = new \ReflectionFunction($name_or_func);
 
@@ -20,17 +28,28 @@ class Ref{
 
 			private $oFunc;
 
-			public function __construct($func){
+			/**
+			 * @param ReflectionFunction $func
+			 */
+			public function __construct(\ReflectionFunction $func){
 
 				$this->oFunc = $func;
 			}
 
-			public function getRef(){
+			/**
+			 * @return ReflectionFunction
+			 */
+			public function getRef():\ReflectionFunction{
 
 				return $this->oFunc;
 			}
 
-			public function invoke(...$args){
+			/**
+			 * @param mixed ...
+			 * 
+			 * @return mixed
+			 */
+			public function invoke(...$args):mixed{
 
 				if(is_null($args))
 					$result = $this->oFunc->invoke();
@@ -44,8 +63,12 @@ class Ref{
 
 	/**
 	* Create reflection from object instance
+	* 
+	* @param object $instance
+	* 
+	* @return Ref
 	*/
-	public static function createFrom(object $instance){
+	public static function createFrom(object $instance):Ref{
 
 		$class = new \ReflectionObject($instance);
 
@@ -56,14 +79,24 @@ class Ref{
 		return $ref;
 	}
 
-	public static function create(string $classname){		
+	/**
+	 * @param string $classname
+	 * 
+	 * @return Ref
+	 */
+	public static function create(string $classname):Ref{		
 
 		$class = new \ReflectionClass($classname);
 
 		return new self($class);
 	}
 
-	public function method(string $name){
+	/**
+	 * @param string $name
+	 * 
+	 * @return mixed
+	 */
+	public function method(string $name):mixed{
 
 		$rMethod = $this->class->getMethod($name);
 
@@ -72,23 +105,34 @@ class Ref{
 			private $oMethod;
 			private $oInstance;
 
-			public function __construct($method, $instance){
+			public function __construct(\ReflectionMethod $method, object $instance){
 
 				$this->oMethod = $method;
 				$this->oInstance = $instance;
 			}
 
-			public function getRef(){
+			/**
+			 * @return \ReflectionMethod
+			 */
+			public function getRef():\ReflectionMethod{
 
 				return $this->oMethod;
 			}
 
-			public function getClosure(){
+			/**
+			 * @return \Closure
+			 */
+			public function getClosure():\Closure{
 
 				return $this->oMethod->getClosure($this->oInstance);
 			}
 
-			public function invoke(...$args){
+			/**
+			 * @param mixed ...
+			 * 
+			 * @return mixed
+			 */
+			public function invoke(...$args):mixed{
 
 				if(is_null($args))
 					$result = $this->oMethod->invoke($this->oInstance);
@@ -100,7 +144,12 @@ class Ref{
 		};
 	}
 
-	public function prop(string $name){
+	/**
+	 * @param string $name
+	 * 
+	 * @return mixed
+	 */
+	public function prop(string $name):mixed{
 
 		$rProp = $this->class->getProperty($name);
 
@@ -109,23 +158,34 @@ class Ref{
 			private $rProp;
 			private $oInstance;
 
-			public function __construct($prop, $instance){
+			public function __construct(\ReflectionProperty $prop, object $instance){
 
 				$this->rProp = $prop;
 				$this->oInstance = $instance;
 			}
 
-			public function getRef(){
+			/**
+			 * @return \ReflectionProperty
+			 */
+			public function getRef():\ReflectionProperty{
 
 				return $this->rProp;
 			}
 
-			public function set($value){
+			/**
+			 * @param mixed $value
+			 * 
+			 * @return void
+			 */
+			public function set(mixed $value):void{
 
 				$this->rProp->setValue($this->oInstance, $value);
 			}
 
-			public function get(){
+			/**
+			 * @return mixed
+			 */
+			public function get():mixed{
 
 				return $this->rProp->getValue($this->oInstance);
 			}
@@ -133,27 +193,39 @@ class Ref{
 	}
 
 	/**
-	* \ReflectionClass
+	* @return \ReflectionClass
 	*/
-	public function getRef(){
+	public function getRef():\ReflectionClass{
 
 		return $this->class;
 	}
 
-	public function getInstance(){
+	/**
+	 * @return object
+	 */
+	public function getInstance():object{
 
 		return $this->instance;
 	}
 
-	public function readyMade($instance){
+	/**
+	 * @param object $instance
+	 * 
+	 * @return object
+	 */
+	public function readyMade(object $instance):object{
 
 		return $this->instance = $instance;
 	}
 
 	/**
 	* newInstance
+	* 
+	* @param mixed ...
+	* 
+	* @return Ref
 	*/
-	public function make(...$args){
+	public function make(...$args):Ref{
 
 		$this->instance = $this->class->newInstance($args);
 
@@ -162,8 +234,12 @@ class Ref{
 
 	/**
 	* newInstanceArgs
+	* 
+	* @param array $args
+	* 
+	* @return Ref
 	*/
-	public function makeArgs($args){
+	public function makeArgs(array $args):Ref{
 
 		$this->instance = $this->class->newInstanceArgs($args);
 
@@ -172,8 +248,10 @@ class Ref{
 
 	/**
 	* newInstanceWithoutConstructor
+	* 
+	* @return Ref
 	*/
-	public function noMake(){
+	public function noMake():Ref{
 
 		$this->instance = $this->class->newInstanceWithoutConstructor();
 

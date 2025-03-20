@@ -21,14 +21,14 @@ class Event{
 	/**
 	* Reflected Event
 	*
-	* @var Strukt\Ref
+	* @var \Strukt\Ref
 	*/
 	private $ref = null;
 
 	/**
 	* List of reflected parameters
 	*
-	* @var Array<ReflectionParameters>
+	* @var array
 	*/
 	private $rParams = null;
 
@@ -49,7 +49,7 @@ class Event{
 	*
 	* @param $event callable
 	*/
-	public static function create(callable $event){
+	public static function create(callable $event):Event{
 
 		return new self($event);
 	}
@@ -61,7 +61,7 @@ class Event{
 	*
 	* @return \Strukt\Event
 	*/
-	public function apply(...$args){
+	public function apply(...$args):Event{
 
 		$this->args = $args;
 
@@ -71,11 +71,11 @@ class Event{
 	/**
 	* Apply arguments to event
 	*
-	* @param $args Array
+	* @param array $args
 	*
 	* @return \Strukt\Event
 	*/
-	public function applyArgs(Array $args){
+	public function applyArgs(array $args):Event{
 
 		$this->args = $args;
 
@@ -85,9 +85,9 @@ class Event{
 	/**
 	* Get list of reflected parameters
 	*
-	* @return Array
+	* @return array
 	*/
-	public function getParams(){
+	public function getParams():array{
 
 		$params = [];
 		foreach($this->rParams as $rParam){
@@ -100,7 +100,12 @@ class Event{
 		return $params;
 	}
 
-	public function expects($type){
+	/**
+	 * @param string $type
+	 * 
+	 * @return boolean
+	 */
+	public function expects(string $type):bool{
 
 		foreach($this->rParams as $rParam)
 			if($rParam->hasType())
@@ -115,7 +120,7 @@ class Event{
 	*
 	* @return mixed
 	*/
-	public function exec(){
+	public function exec():mixed{
 
 		if(is_null($this->args))
 			return $this->ref->invoke();

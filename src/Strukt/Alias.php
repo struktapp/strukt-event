@@ -2,11 +2,24 @@
 
 namespace Strukt;
 
+/**
+* Aliasing class
+* 
+* You can alias a command, event-name or string
+*
+* @author Moderator <pitsolu@gmail.com>
+*/
 class Alias{
 
 	protected static $aliases = []; 
 
-	public static function set(string $alias, string $long_name){
+	/**
+	 * @param string $alias
+	 * @param string $long_name
+	 * 
+	 * @return string
+	 */
+	public static function set(string $alias, string $long_name):string{
 
 		if(self::exists($alias))
 			throw new \Exception(sprintf("Alias %s already exists!", $alias));
@@ -14,7 +27,12 @@ class Alias{
 		return static::$aliases[$alias] = $long_name;
 	}
 
-	public static function get(string $alias){
+	/**
+	 * @param string $alias
+	 * 
+	 * @return string
+	 */
+	public static function get(string $alias):string|null{
 
 		if(self::exists($alias))
 			return static::$aliases[$alias];
@@ -22,12 +40,22 @@ class Alias{
 		return null;
 	}
 
-	public static function exists(string $alias){
+	/**
+	 * @param string $alias
+	 * 
+	 * @return boolean
+	 */
+	public static function exists(string $alias):bool{
 
 		return array_key_exists($alias, static::$aliases);
 	}
 
-	public static function ls(string $starts_with = null){
+	/**
+	 * @param string $starts_with
+	 * 
+	 * @return array
+	 */
+	public static function ls(?string $starts_with):array{
 
 		$names = array_keys(static::$aliases);
 		if(is_null($starts_with))

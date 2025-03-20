@@ -7,12 +7,20 @@ class Loop extends Cmd{
 	private static $halted = false;
 	private static $halted_at = null;
 
-	private static function noExit(){
+	/**
+	 * @return boolean
+	 */
+	private static function noExit():bool{
 
 		return !empty(static::$callbacks);
 	}
 
-	public static function halt(callable $callback){
+	/**
+	 * @param callable $callback
+	 * 
+	 * @return void
+	 */
+	public static function halt(callable $callback):void{
 
 		static::$halted = true;
 		static::$halted_at = sprintf("init:halted@%s", sha1(rand()));
@@ -20,17 +28,34 @@ class Loop extends Cmd{
 		static::add(static::$halted_at, $callback);
 	}
 
-	public static function pause(bool $halt = true){
+	/**
+	 * Halt loop
+	 * 
+	 * @param bool $halt
+	 */
+	public static function pause(?bool $halt):void{
 
 		static::$halted = $halt;		
 	}
 
+	/**
+	 * Check if loop is halted
+	 * 
+	 * @return boolean
+	 */
 	public static function isHalted(){
 
 		return static::$halted;
 	}
 
-	public static function run(array $options = []){
+	/**
+	 * Run loop
+	 * 
+	 * @param array $options
+	 * 
+	 * @return void
+	 */
+	public static function run(array $options = []):void{
 
 		$names = static::$names;
 		if(array_key_exists("alias", $options)){

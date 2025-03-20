@@ -4,6 +4,8 @@ use Strukt\Event;
 
 class EventTest extends PHPUnit\Framework\TestCase{
 
+	private $login;
+
 	public function setUp():void{
 
 		$credentials = array("admin", "p@55w0rd");

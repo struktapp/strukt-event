@@ -8,7 +8,7 @@ helper("events");
 
 if(helper_add("event")){
 
-	function event(string $name, callable $func = null){
+	function event(string $name, ?callable $func){
 
 		if(!is_null($func))
 			Cmd::add($name, $func);
@@ -20,7 +20,7 @@ if(helper_add("event")){
 
 if(helper_add("cmd")){
 
-	function cmd(string $name, array $args = null){
+	function cmd(string $name, ?array $args){
 
 		if(Cmd::exists($name)){
 
@@ -34,7 +34,7 @@ if(helper_add("cmd")){
 
 if(helper_add("alias")){
 
-	function alias(string $alias = null, string $long_name = null){
+	function alias(?string $alias, ?string $long_name){
 
 		if(!is_null($alias))
 			if(!str_ends_with($alias, "*")){
@@ -70,7 +70,7 @@ if(helper_add("ref")){
 				return Strukt\Ref::create($class);
 
 		if(is_object($class))
-			if(class_exists(@array_shift(array_filter([get_class($class)], fn($name)=>$name!="Closure"))??""))
+			if(class_exists(@array_shift(array_filter([get_class($class)], fn($name)=>$name!=Closure::class))??""))
 				return Strukt\Ref::createFrom($class);
 
 		if(is_callable($class))
