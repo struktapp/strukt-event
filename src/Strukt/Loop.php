@@ -33,7 +33,7 @@ class Loop extends Cmd{
 	 * 
 	 * @param bool $halt
 	 */
-	public static function pause(?bool $halt):void{
+	public static function pause(bool $halt = true):void{
 
 		static::$halted = $halt;		
 	}

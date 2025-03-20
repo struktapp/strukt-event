@@ -55,7 +55,7 @@ class Alias{
 	 * 
 	 * @return array
 	 */
-	public static function ls(?string $starts_with):array{
+	public static function ls(?string $starts_with = null):array{
 
 		$names = array_keys(static::$aliases);
 		if(is_null($starts_with))

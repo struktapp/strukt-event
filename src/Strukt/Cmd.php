@@ -53,7 +53,7 @@ class Cmd{
 	 * 
 	 * @return array
 	 */
-	public static function ls(?string $filter):array{
+	public static function ls(?string $filter = null):array{
 
 		if(!is_null($filter))
 			return array_keys(array_filter(static::$callbacks, 
@@ -100,7 +100,7 @@ class Cmd{
 	 * 
 	 * @return mixed
 	 */
-	public static function exec(string $name, ?array $args):mixed{
+	public static function exec(string $name, ?array $args = null):mixed{
 
 		$callback = static::get($name);
 

@@ -3,12 +3,19 @@
 use Strukt\Event;
 use Strukt\Cmd;
 use Strukt\Alias;
+use Strukt\Ref;
 
 helper("events");
 
 if(helper_add("event")){
 
-	function event(string $name, ?callable $func){
+	/**
+	 * @param string $name
+	 * @param callable $func
+	 * 
+	 * @return Event
+	 */
+	function event(string $name, ?callable $func = null):?Event{
 
 		if(!is_null($func))
 			Cmd::add($name, $func);
@@ -20,7 +27,13 @@ if(helper_add("event")){
 
 if(helper_add("cmd")){
 
-	function cmd(string $name, ?array $args){
+	/**
+	 * @param string $name
+	 * @param array $args
+	 * 
+	 * @return mixed
+	 */
+	function cmd(string $name, ?array $args = null):mixed{
 
 		if(Cmd::exists($name)){
 
@@ -29,12 +42,20 @@ if(helper_add("cmd")){
 
 			return Cmd::exec($name);
 		}
+
+		return null;
 	}
 }
 
 if(helper_add("alias")){
 
-	function alias(?string $alias, ?string $long_name){
+	/**
+	 * @param string $alias
+	 * @param string $long_name
+	 * 
+	 * @return array|string|null
+	 */
+	function alias(?string $alias = null, ?string $long_name = null):array|string|null{
 
 		if(!is_null($alias))
 			if(!str_ends_with($alias, "*")){
@@ -55,6 +76,13 @@ if(helper_add("alias")){
 
 if(helper_add("path")){
 
+	/**
+	 * Just a function to highlight a path on code
+	 * 
+	 * @param string $path
+	 * 
+	 * @return string
+	 */
 	function path(string $path){
 
 		return $path;
@@ -63,7 +91,12 @@ if(helper_add("path")){
 
 if(helper_add("ref")){
 
-	function ref(mixed $class){
+	/**
+	 * @param string|object|callable $class
+	 * 
+	 * @return mixed
+	 */
+	function ref(string|object|callable $class):mixed{
 
 		if(is_string($class))
 			if(class_exists($class))
