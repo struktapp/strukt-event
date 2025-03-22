@@ -22,6 +22,8 @@ if(helper_add("event")){
 
 		if(Cmd::exists($name))
 			return new Event(Cmd::get($name));
+
+		return null;
 	} 
 }
 
