@@ -13,7 +13,7 @@ if(helper_add("event")){
 	 * @param string $name
 	 * @param callable $func
 	 * 
-	 * @return Event
+	 * @return \Strukt\Event
 	 */
 	function event(string $name, ?callable $func = null):?Event{
 
@@ -85,7 +85,7 @@ if(helper_add("path")){
 	 * 
 	 * @return string
 	 */
-	function path(string $path){
+	function path(string $path):string{
 
 		return $path;
 	}
