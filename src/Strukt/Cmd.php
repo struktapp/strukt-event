@@ -1,4 +1,4 @@
-<?php
+t<?php
 
 namespace Strukt;
 
@@ -43,7 +43,7 @@ class Cmd{
 	 * 
 	 * @return callable
 	 */
-	public static function get(string $name):callable{
+	public static function get(string $name):?callable{
 
 		return static::$callbacks[$name];
 	}

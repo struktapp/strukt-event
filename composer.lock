@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/struktapp/strukt-base.git",
-                "reference": "b532166c1578783f1c22943e37329b2752ce37e7"
+                "reference": "2599a11bea055d4e516dc5067170cc38f5219ae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/struktapp/strukt-base/zipball/b532166c1578783f1c22943e37329b2752ce37e7",
-                "reference": "b532166c1578783f1c22943e37329b2752ce37e7",
+                "url": "https://api.github.com/repos/struktapp/strukt-base/zipball/2599a11bea055d4e516dc5067170cc38f5219ae4",
+                "reference": "2599a11bea055d4e516dc5067170cc38f5219ae4",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 "issues": "https://github.com/struktapp/strukt-base/issues",
                 "source": "https://github.com/struktapp/strukt-base/tree/v1.0.0"
             },
-            "time": "2025-04-07T17:29:01+00:00"
+            "time": "2025-04-13T21:43:32+00:00"
         }
     ],
     "packages-dev": [],
