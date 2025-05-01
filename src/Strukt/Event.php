@@ -9,7 +9,10 @@ namespace Strukt;
 */
 class Event{
 
-	use Traits\Arr;
+	use Traits\Arr{
+
+		isMap as protected is_map;
+	}
 
 	/**
 	* Event arguments
@@ -128,7 +131,7 @@ class Event{
 			return $this->ref->invoke();
 
 		$args=null;
-		if($this->isMap($this->args))
+		if($this->is_map($this->args))
 			foreach($this->rParams as $rParam)
 				$args[] = $this->args[$rParam->getName()];
 
