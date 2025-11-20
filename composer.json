@@ -1,0 +1,20 @@
+{
+    "name": "strukt/event",
+    "description": "Not Event Loop",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Strukt\\": "src/Strukt"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "authors": [
+        {
+            "name": "pitsolu",
+            "email": "pitsolu@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
