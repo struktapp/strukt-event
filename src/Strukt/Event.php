@@ -86,9 +86,9 @@ class Event{
 	/**
 	* Get reflector
 	*
-	* @return array
+	* @return Strukt\Ref
 	*/
-	public function getRef():array{
+	public function getRef():Ref{
 
 		return $this->ref->getRef();
 	}
