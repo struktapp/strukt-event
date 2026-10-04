@@ -72,7 +72,7 @@ final class Event
      *
      * @return \ReflectionFunction Callable reflection.
      */
-    public function getRef(): \ReflectionFunction
+    public function ref(): \ReflectionFunction
     {
         return $this->reflection;
     }

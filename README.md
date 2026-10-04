@@ -84,7 +84,7 @@ new Event(callable $event)
 Event::create(callable $event): Event
 $event->apply(mixed ...$args): Event
 $event->applyArgs(array $args): Event
-$event->getRef(): ReflectionFunction
+$event->ref(): ReflectionFunction
 $event->exec(): mixed
 ```
 
